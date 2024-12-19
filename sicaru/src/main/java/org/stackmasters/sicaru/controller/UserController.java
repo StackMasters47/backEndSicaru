@@ -36,7 +36,7 @@ public class UserController {
 		return this.userService.getAll();
 	}
 	
-	//Endpoint para encontrar un usuario por su id
+	//Endpoint para obtener un usuario por id
 	@GetMapping("/users/{id}")
 	public UserEntity findById(@PathVariable(name = "id") Long id) {
 		return this.userService.userById(id);
