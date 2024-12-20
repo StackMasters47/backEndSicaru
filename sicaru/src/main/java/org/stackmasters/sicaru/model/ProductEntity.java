@@ -1,15 +1,16 @@
 package org.stackmasters.sicaru.model;
 
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-//id_categoria nombre descripcion precio stock
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,32 +21,26 @@ public class ProductEntity {
 	@Column(name="id_producto")
 	private Long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_categoria",nullable = false)
-    private CategoryEntity categoria; // Referencia a la entidad `CategoryEntity`
+    @Column(name = "categoria", length = 80, nullable = false)
+    private String category; // Referencia a la entidad `CategoryEntity`
 	
-    @Column(name = "nombre", length = 80, nullable = false)
-    private String nombre;
+    @Column(name = "nombre_producto", length = 80, nullable = false)
+    private String name;
 
     @Column(name = "descripcion", nullable = false)
-    private String descripcion;
+    private String description;
 
-    @Column(name = "precio", nullable = false)
-    private Double precio;
+    @Column(name = "precio", nullable = false, columnDefinition = "DECIMAL(10,2)")
+    private Double price;
 
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
-	public ProductEntity() {
-	}
-
-	public ProductEntity(Long id, CategoryEntity categoria, String nombre, String descripcion, Double precio, Integer stock) {
-		this.id = id;
-		this.categoria = categoria;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.precio = precio;
-		this.stock = stock;
+    @ManyToMany(mappedBy = "products")
+    @JsonIgnore
+    private List<OrderEntity> orders;
+	
+    public ProductEntity() {
 	}
 
 	public Long getId() {
@@ -56,36 +51,36 @@ public class ProductEntity {
 		this.id = id;
 	}
 
-	public CategoryEntity getCategoria() {
-		return categoria;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategoria(CategoryEntity categoria) {
-		this.categoria = categoria;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Double getPrecio() {
-		return precio;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public Integer getStock() {
@@ -96,9 +91,17 @@ public class ProductEntity {
 		this.stock = stock;
 	}
 
+	public List<OrderEntity> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(categoria, descripcion, id, nombre, precio, stock);
+		return Objects.hash(category, description, id, name, orders, price, stock);
 	}
 
 	@Override
@@ -110,12 +113,9 @@ public class ProductEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		ProductEntity other = (ProductEntity) obj;
-		return Objects.equals(categoria, other.categoria) && Objects.equals(descripcion, other.descripcion)
-				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(precio, other.precio) && Objects.equals(stock, other.stock);
-	}
-	
-	
-    
-    
+		return Objects.equals(category, other.category) && Objects.equals(description, other.description)
+				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(orders, other.orders) && Objects.equals(price, other.price)
+				&& Objects.equals(stock, other.stock);
+	}       
 }
