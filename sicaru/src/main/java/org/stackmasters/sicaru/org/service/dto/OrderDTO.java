@@ -2,14 +2,15 @@ package org.stackmasters.sicaru.org.service.dto;
 
 import java.util.List;
 
+import org.stackmasters.sicaru.model.UserEntity;
+
 public class OrderDTO {
 	private Long id;
     private String date;
     private Double total;
     private String status;
-    private Long user; 
-    private List<Long> products;
-    
+    private UserEntity user; // Usamos directamente UserEntity
+    private List<ProductDTO> products; // Nueva clase DTO para productos
 	public Long getId() {
 		return id;
 	}
@@ -34,18 +35,17 @@ public class OrderDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Long getUser() {
+	public UserEntity getUser() {
 		return user;
 	}
-	public void setUser(Long user) {
+	public void setUser(UserEntity user) {
 		this.user = user;
 	}
-	public List<Long> getProducts() {
+	public List<ProductDTO> getProducts() {
 		return products;
 	}
-	public void setProducts(List<Long> products) {
+	public void setProducts(List<ProductDTO> products) {
 		this.products = products;
-	}  
-    
+	}
     
 }

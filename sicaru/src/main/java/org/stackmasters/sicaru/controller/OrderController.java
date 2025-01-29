@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.stackmasters.sicaru.model.OrderEntity;
+import org.stackmasters.sicaru.org.service.dto.OrderCreateDTO;
 import org.stackmasters.sicaru.org.service.dto.OrderDTO;
 import org.stackmasters.sicaru.service.OrderService;
 
@@ -32,7 +33,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/new-order")
-	public OrderEntity createOrder(@RequestBody OrderDTO newOrderDTO) {
+	public OrderEntity createOrder(@RequestBody OrderCreateDTO newOrderDTO) {
 	    return this.orderService.createOrder(newOrderDTO);
 	}
 }

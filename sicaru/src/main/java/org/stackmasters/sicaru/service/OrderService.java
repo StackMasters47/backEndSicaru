@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.stackmasters.sicaru.model.OrderEntity;
 import org.stackmasters.sicaru.model.ProductEntity;
 import org.stackmasters.sicaru.model.UserEntity;
+import org.stackmasters.sicaru.org.service.dto.OrderCreateDTO;
 import org.stackmasters.sicaru.org.service.dto.OrderDTO;
+import org.stackmasters.sicaru.org.service.dto.ProductDTO;
 import org.stackmasters.sicaru.repository.OrderRepository;
 import org.stackmasters.sicaru.repository.ProductRepository;
 import org.stackmasters.sicaru.repository.UserRepository;
@@ -36,31 +38,34 @@ public class OrderService {
 		// Obtener las órdenes completas desde el repositorio
 	    List<OrderEntity> orders = this.orderRepository.findAll();
 	    
-	    // Convertir las órdenes a DTOs
+	 // Convertir las órdenes a DTOs
 	    List<OrderDTO> orderDTOs = orders.stream().map(order -> {
 	        OrderDTO orderDTO = new OrderDTO();
 	        orderDTO.setId(order.getId());
 	        orderDTO.setDate(order.getDate());
 	        orderDTO.setTotal(order.getTotal());
 	        orderDTO.setStatus(order.getStatus());
-	        
-	        // Solo almaceno el ID del usuario
-	        orderDTO.setUser(order.getUser().getId());
 
-	        // Solo almaceno los IDs de los productos
-	        List<Long> productIds = order.getProducts().stream()
-	            .map(product -> product.getId())
-	            .collect(Collectors.toList());
-	        orderDTO.setProducts(productIds);
-	        
+	        // Asignar directamente el objeto UserEntity al DTO
+	        orderDTO.setUser(order.getUser());
+
+	        // Mapear los productos a ProductDTO
+	        List<ProductDTO> productDTOs = order.getProducts().stream().map(product -> {
+	            ProductDTO productDTO = new ProductDTO();
+	            productDTO.setId(product.getId());
+	            productDTO.setCategory(product.getCategory());
+	            return productDTO;
+	        }).collect(Collectors.toList());
+	        orderDTO.setProducts(productDTOs);
+
 	        return orderDTO;
-	    }).collect(Collectors.toList()); //Añadimos todos los DTO en una lista.
-	    
+	    }).collect(Collectors.toList()); // Añadimos todos los DTO en una lista.
+
 	    return orderDTOs;
 	}
 	
 	//Método para crear un pedido
-	public OrderEntity createOrder(OrderDTO newOrderDTO) {
+	public OrderEntity createOrder(OrderCreateDTO newOrderDTO) {
         OrderEntity order = new OrderEntity();
 
         // Establecer fecha, total, estado (por ejemplo, Pendiente)

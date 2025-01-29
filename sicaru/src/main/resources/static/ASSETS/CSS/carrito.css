@@ -1,0 +1,93 @@
+@font-face {
+   font-family: 'Montserrat';
+   src: url('/ASSETS/FONTS/Montserrat/Montserrat-Regular.ttf') format('truetype'); 
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ @font-face {
+   font-family: 'Overlock';
+   src: url('/ASSETS/FONTS/Overlock/Overlock-Bold.ttf') format('truetype'); 
+   font-weight: 700;
+   font-style: normal;
+ }
+ 
+ body {
+   background:  url('/ASSETS/IMG/fondo.webp') rgba(6, 3, 3, 0.6)!important; 
+}
+
+main{
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+main .container{
+   background-color: #000;
+   display:grid;
+   justify-content: center;
+   color: #ffffff;
+   font-family: 'Overlock';
+   text-align: center;
+   width: 70%;
+}
+
+main #tabla-productos{
+   background-color: #000;
+   color: #ffffff !important;
+   font-family: 'Montserrat' !important;
+   justify-content: center;
+   border-width: 2px;
+   width: 100%;
+   border-color: #ffffff;
+   border-style: double;
+
+
+}
+main #tabla-productos th{
+   color: #ffffff !important;
+   font-family: 'Montserrat' !important;
+}
+main #tabla-productos td {
+   color:#ffffff !important;
+   font-family: 'Montserrat' !important;
+}
+
+main .table{
+   color: #ffffff !important;
+}
+
+
+main .increase{
+   background-color: #f6b94f;
+   border-color: #f6b94f;
+   font-family: 'Montserrat' !important;
+}
+
+main #clear-cart{
+   width: 30%;
+   background-color: #98bf3e;
+   border-color: #98bf3e;
+   color: #000;
+   font-family: 'Montserrat' !important;
+   margin-bottom: 2px;
+}
+
+main #comprar{
+   width: 30%;
+   background-color:#9f2884;
+   color: #000;
+   border-color: #9f2884;
+   font-family: 'Montserrat';
+
+}
+
+main .decrease{
+   background-color: #f36b37;
+   border-color:#f36b37;
+   font-family: 'Montserrat' !important;
+}
+
+main .remove{
+   background-color: #246784;
+   border-color: #246784;
+   font-family: 'Montserrat' !important;
+}

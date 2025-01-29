@@ -1,0 +1,270 @@
+@import "COLORES.css";
+@import "footer.css";
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('/ASSETS/FONTS/Montserrat/Montserrat-Regular.ttf') format('truetype'); 
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'Overlock';
+	src: url('/ASSETS/FONTS/Overlock/Overlock-Bold.ttf') format('truetype'); 
+	font-weight: 700;
+	font-style: normal;
+  }
+  
+
+
+body{
+    background:  url('/ASSETS/IMG/fondo.webp') rgba(6, 3, 3, 0.6) !important; 
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+   
+}
+
+
+
+/*Versión 2 categorias*/
+
+.team-area {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color12);
+    padding: 10px;
+    
+}
+.box {
+	position: relative;
+	margin: 20px;
+	overflow: hidden;
+	border-radius: 12px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-width: 400px;
+	transition: transform 0.3s ease;
+}
+.box img {
+	width: 100%;
+	display: block;
+	border-radius: 10px;
+	transition: transform 0.5s ease;
+}
+.box:hover {
+	transform: scale(1.05);
+}
+.box figcaption {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	padding: 20px;
+	text-align: center;
+	background: rgba(0, 0, 0, 40%);
+	transform: translateY(100%);
+	transition: transform 0.5s ease;
+	border-radius: 100px 100px 0 0;
+
+}
+.box figcaption a{
+    text-decoration: none;
+    color:var(--colorwhite);
+}
+.box:hover figcaption {
+	transform: translateY(0);
+}
+.box h2 {
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-family: 'overlock';
+	margin: 0;
+}
+
+
+
+
+/*carrusel  reseñas*/
+.containermt-5 img {
+    width: 200px;
+    height: 200px;
+}
+
+.containermt-5 {
+    background-color: var(--colorblack);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1122px;
+    margin: 0 auto;
+    text-align: center;
+
+
+}
+
+.containermt-5 p {
+    text-align: center;
+    color: var(--color8);
+    font-family: 'Overlock';
+}
+
+
+
+.containermt-5 h1 {
+    color: var(--color8)
+}
+
+/*Productos*/
+.title2 h1 {
+    color: var(--color8);
+    text-align: center;
+    font-size: 50px;
+    background-color: var(--colorblack);
+    padding: 20px;
+    font-family: 'Overlock';
+
+
+}
+.offer.hidden {
+    visibility: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 5% auto;
+    border-radius: 10px;
+}
+
+.product-area {
+    width: 30%;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--colorblack);
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+.img-area {
+    position: relative;
+    width: 100%;
+}
+
+.img-area img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0
+}
+
+.product-overlay:hover {
+    opacity: 0.9;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color8);
+    color: var(--colorwhite);
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn-2 {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: var(--color2);
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.overlay a:hover{
+    color: var(--colorblack);
+}
+
+.info-area {
+    padding: 10px 20px;
+    text-align: center;
+    background: var(--colorblack);
+}
+
+.info-area h3 {
+    font-size: 30px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--colorwhite);
+    font-family:'Overlock';
+    font-size: 25px;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.rating span {
+    color: var(--colorwhite);
+}
+
+.checked {
+    color: var(--color5) !important;
+}
+
+.product-price {
+    font-size: 25px;
+    color: var(--color8);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footerC{
+    background-color: var(--colorblack);
+    padding: 40px 0;
+}
+@media (max-width: 768px) {
+    .product-area {
+        width: 48%;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-area {
+        width: 100%;
+    }
+}
+
+@media(max-width: 800px) {
+	.team-area {
+		flex-direction: column;
+	}
+}
+@media(max-width: 600px) {
+	.box h2 {
+		font-size: 20px;
+	}
+}
